@@ -1,5 +1,6 @@
 const fs = require('fs');
 const xml2js = require('xml2js');
+const util = require('util');
 
 // Read the XML content from a file or variable
 const xml = fs.readFileSync('ATAK.one sqaure.kml', 'utf-8'); // Replace with your XML content
@@ -34,24 +35,36 @@ parser.parseString(xml, (err, result) => {
 
     // Check if the object contains 'Polygon' data
     if (item.Polygon) {
-      const coordinates = item.Polygon.outerBoundaryIs.LinearRing.coordinates._;
-      // Split the coordinates into an array and convert to points
-      points = coordinates.split(' ').map(coord => {
-        const [longitude, latitude] = coord.split(',').map(parseFloat);
-        return { longitude, latitude };
-      });
+        const coordinates = item.Polygon.outerBoundaryIs.LinearRing.coordinates._;
+        // Split the coordinates into an array and convert to an array of objects, removing undefined or NaN entries
+        points = coordinates.split(' ')
+            .map(coord => {
+                const [longitude, latitude] = coord.split(',').map(parseFloat);
+                if (!isNaN(longitude) && !isNaN(latitude)) {
+                    return { latitude, longitude };
+                }
+                return null;
+            })
+            .filter(point => point !== null);
     }
     // Check if the object contains 'Point' data
     else if (item.Point) {
-      const coordinates = item.Point.coordinates._;
-      // Split the coordinates into an array and convert to points
-      points = coordinates.split(' ').map(coord => {
-        const [longitude, latitude] = coord.split(',').map(parseFloat);
-        return { longitude, latitude };
-      });
+        const coordinates = item.Point.coordinates._;
+        // Split the coordinates into an array and convert to an array of objects, removing undefined or NaN entries
+        points = coordinates.split(' ')
+            .map(coord => {
+                const [longitude, latitude] = coord.split(',').map(parseFloat);
+                if (!isNaN(longitude) && !isNaN(latitude)) {
+                    return { latitude, longitude };
+                }
+                return null;
+            })
+            .filter(point => point !== null);
     }
 
     extractedData.push({ name, id, points });
-  });
-  console.log(extractedData);
 });
+  console.log(extractedData);
+  console.log(util.inspect(extractedData, { showHidden: false, depth: null }));
+});
+
