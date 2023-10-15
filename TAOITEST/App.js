@@ -1,16 +1,20 @@
 import * as DocumentPicker from 'expo-document-picker';
+import * as FileSystem from "expo-file-system"
+import * as MediaLibrary from 'expo-media-library';
+import * as Permissions from 'expo-permissions';
+import * as Sharing from 'expo-sharing';
 
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
-import { PermissionsAndroid, Platform } from 'react-native';
+import { Alert, Button, Platform, StyleSheet, Text, View } from 'react-native';
 
-import FileSystem from "expo-file-system"
+import { PermissionsAndroid } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { shareAsync } from 'expo-sharing';
 import xml2js from 'xml2js';
 
-let kmlJSON = {};
-//let shapes = {
+let kmlJSON = {};  
+//let shapes = {  
 //  shapes: [
-//    {name: "", coordinates: [],id:""},
+//    {name: "", coordinates: [],id:""}, 
 //  ]
 //}
 
@@ -171,19 +175,55 @@ async function ingestKML(){
 }
 
 async function ExportJSON() {
-  console.log('Exporting JSON file.')
+  console.log('Exporting JSON file.');
+
+  // Convert the kmlJSON object to a JSON string
+  const json = JSON.stringify(kmlJSON);
+  console.log("json written");
+
+  // Define the file path in the downloads folder
+  const downloadFolder = FileSystem.documentDirectory + 'Download/';
+  const path = downloadFolder + 'kmlJSON.json';
+
+    console.log("path",path);
+    await FileSystem.writeAsStringAsync(path, json);
+    console.log("file written");
+    await saveFile(path, 'kmlJSON.json','application/json');
+}
+
+async function saveFile(uri, filename, mimetype) {
+  console.log("save", uri, filename, mimetype);
+
+  async function saveAndWriteFile(directoryUri) {
+    const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+    const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(directoryUri, filename, mimetype);
+    
+    await FileSystem.writeAsStringAsync(savedFileUri, base64, { encoding: FileSystem.EncodingType.Base64 });
+  }
+
+  if (Platform.OS === 'android') {
+    const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+    if (permissions.granted) {
+      await saveAndWriteFile(permissions.directoryUri);
+    } else {
+      shareAsync(uri);
+    }
+  } else {
+    shareAsync(uri);
+  }
 }
 
 async function clearJSON(){
   kmlJSON = {};
   Alert.alert("KML JSON object cleared");
+  console.log("cleared!",kmlJSON)
 }
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Button title="Import KML" onPress={() => ingestKML()} />
-      <Button color = {(Object.keys(kmlJSON).length === 0)?"grey":""} title="clear KML object" onPress={()=>clearJSON()} />
+      <Button title="clear KML object" onPress={()=>clearJSON()} />
       <Text>Open up App.js to start working on your app!</Text>
       <Text>Hello World</Text>
       <Text>Test</Text>
