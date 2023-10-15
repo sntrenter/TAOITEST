@@ -8,3 +8,5 @@ java and kotlin development is slow
 
 
 alert('Hello World')
+
+https://www.youtube.com/watch?v=HkIKDqzI3sQ

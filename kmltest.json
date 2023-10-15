@@ -1,0 +1,153 @@
+[
+    {
+      "id": {
+        "name": "id",
+        "value": "43347da7-42c7-4206-8df5-6dae743f2fc8Rectangle 1 outer",
+        "prefix": "",
+        "local": "id",
+        "uri": ""
+      },
+      "$ns": {
+        "uri": "http://www.opengis.net/kml/2.2",        
+        "local": "Placemark"
+      },
+      "extendedData": {
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "extendedData"
+        },
+        "Data": {
+          "name": {
+            "name": "name",
+            "value": "factory",
+            "prefix": "",
+            "local": "name",
+            "uri": ""
+          },
+          "$ns": {
+            "uri": "http://www.opengis.net/kml/2.2",    
+            "local": "Data"
+          },
+          "value": {
+            "_": "u-d-r",
+            "$ns": {
+              "uri": "http://www.opengis.net/kml/2.2",  
+              "local": "value"
+            }
+          }
+        }
+      },
+      "name": {
+        "_": "Rectangle 1",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "name"
+        }
+      },
+      "styleUrl": {
+        "_": "#-2139387924",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "styleUrl"
+        }
+      },
+      "visibility": {
+        "_": "true",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "visibility"
+        }
+      },
+      "Polygon": {
+        "id": {
+          "name": "id",
+          "value": "43347da7-42c7-4206-8df5-6dae743f2fc8",
+          "prefix": "",
+          "local": "id",
+          "uri": ""
+        },
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "Polygon"
+        },
+        "altitudeMode": {
+          "_": "clampToGround",
+          "$ns": {
+            "uri": "http://www.opengis.net/kml/2.2",    
+            "local": "altitudeMode"
+          }
+        },
+        "outerBoundaryIs": {
+          "$ns": {
+            "uri": "http://www.opengis.net/kml/2.2",    
+            "local": "outerBoundaryIs"
+          },
+          "LinearRing": {
+            "$ns": {
+              "uri": "http://www.opengis.net/kml/2.2",  
+              "local": "LinearRing"
+            },
+            "coordinates": {
+              "_": "-76.61939921037313,38.17584821917435 -71.96983082135502,38.029050893946064 -71.8096645242256,39.91045941333189 -76.5842265973847,40.06115579443685 -76.61939921037313,38.17584821917435 ",
+              "$ns": {
+                "uri": "http://www.opengis.net/kml/2.2",              "local": "coordinates"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": {
+        "name": "id",
+        "value": "43347da7-42c7-4206-8df5-6dae743f2fc8Rectangle 1 center",
+        "prefix": "",
+        "local": "id",
+        "uri": ""
+      },
+      "$ns": {
+        "uri": "http://www.opengis.net/kml/2.2",        
+        "local": "Placemark"
+      },
+      "name": {
+        "_": "Rectangle 1",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "name"
+        }
+      },
+      "styleUrl": {
+        "_": "#-2139387924",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "styleUrl"
+        }
+      },
+      "visibility": {
+        "_": "true",
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "visibility"
+        }
+      },
+      "Point": {
+        "$ns": {
+          "uri": "http://www.opengis.net/kml/2.2",      
+          "local": "Point"
+        },
+        "altitudeMode": {
+          "_": "clampToGround",
+          "$ns": {
+            "uri": "http://www.opengis.net/kml/2.2",    
+            "local": "altitudeMode"
+          }
+        },
+        "coordinates": {
+          "_": "-74.24532311817119,39.050101223885214 ",        "$ns": {
+            "uri": "http://www.opengis.net/kml/2.2",    
+            "local": "coordinates"
+          }
+        }
+      }
+    }
+  ]
