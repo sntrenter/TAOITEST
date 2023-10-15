@@ -182,7 +182,7 @@ async function ExportJSON() {
   console.log("json written");
 
   // Define the file path in the downloads folder
-  const downloadFolder = FileSystem.documentDirectory + 'Download/';
+  const downloadFolder = FileSystem.documentDirectory;
   const path = downloadFolder + 'kmlJSON.json';
 
     console.log("path",path);
