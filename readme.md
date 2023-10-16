@@ -10,3 +10,8 @@ java and kotlin development is slow
 alert('Hello World')
 
 https://www.youtube.com/watch?v=HkIKDqzI3sQ
+
+It seems KMLs repeat the last lat/long to denote a closed polygon/shape
+//will need to trim the last part of the TAOI
+
+find out if there is a way to do plot_test.py in javascript

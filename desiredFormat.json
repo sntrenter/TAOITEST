@@ -1,0 +1,72 @@
+{
+    "shapes": [
+        {
+            "name": "exampleRectangle1",
+            "description": "An example shape",
+            "type": 3,
+            "color": 4,
+            "lineStyle": 1,
+            "shapeType": 18,
+            "userDrawnShapeIsClosed": "true",
+            "uniqueShapeID": "bb8cc662-1554-4a5c-8dfl-624868a09f6e",
+            "isACircle": "false",
+            "radiusInNM": 0,
+            "taoiPoints": [
+                {
+                    "latitudeDegrees": 42.083338237203478,
+                    "longitudeDegrees": -70.155234651439329,
+                    "pointConnected": 0
+                },
+                {
+                    "latitudeDegrees": 42.016644126954404,
+                    "longitudeDegrees": -70.155281453864973,
+                    "pointConnected": 1
+                },
+                {
+                    "latitudeDegrees": 42.816644126954484,
+                    "longitudeDegrees": -70.244718546135847,
+                    "pointConnected": 1
+                },
+                {
+                    "latitudeDegrees": 42.883338237283478,
+                    "longitudeDegrees": -78.244765348568691,
+                    "pointConnected": 1
+                }
+            ]
+        },
+        {
+            "name": "exampleRectangle2",
+            "description": "Another example shape",
+            "type": 3,
+            "color": 4,
+            "lineStyle": 1,
+            "shapeType": 18,
+            "userDrawnShapeIsClosed": "true",
+            "uniqueShapeID": "aDifferentUniqueID",
+            "isACircle": "false",
+            "radiusInNM": 0,
+            "taoiPoints": [
+                {
+                    "latitudeDegrees": 42.083338237203478,
+                    "longitudeDegrees": -70.155234651439329,
+                    "pointConnected": 0
+                },
+                {
+                    "latitudeDegrees": 42.016644126954404,
+                    "longitudeDegrees": -70.155281453864973,
+                    "pointConnected": 1
+                },
+                {
+                    "latitudeDegrees": 42.816644126954484,
+                    "longitudeDegrees": -70.244718546135847,
+                    "pointConnected": 1
+                },
+                {
+                    "latitudeDegrees": 42.883338237283478,
+                    "longitudeDegrees": -78.244765348568691,
+                    "pointConnected": 1
+                }
+            ]
+        }
+    ]
+}

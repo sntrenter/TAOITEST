@@ -12,11 +12,7 @@ import { shareAsync } from 'expo-sharing';
 import xml2js from 'xml2js';
 
 let kmlJSON = {};  
-//let shapes = {  
-//  shapes: [
-//    {name: "", coordinates: [],id:""}, 
-//  ]
-//}
+
 
 async function importKML() {
   console.log('Importing KML file.')
@@ -219,10 +215,72 @@ async function clearJSON(){
   console.log("cleared!",kmlJSON)
 }
 
+async function CleanKMLJSON(){
+  Valid_TAOIs = []
+  for (let i = 0; i < kmlJSON.length; i++) {
+    //if TAOI[i].points first and last point are the same, remove the last point
+    if (kmlJSON[i].points[0].latitude === kmlJSON[i].points[kmlJSON[i].points.length - 1].latitude && kmlJSON[i].points[0].longitude === kmlJSON[i].points[kmlJSON[i].points.length - 1].longitude) {
+      kmlJSON[i].points.pop();
+    }
+    if (kmlJSON[i].points.length >= 2 && kmlJSON[i].points.length <= 20) {
+      Valid_TAOIs.push(kmlJSON[i]);
+      console.log(`TAOI  ${i}`);
+      console.log("adding to valid TAOIs")
+      console.log(kmlJSON[i]);
+      console.log(kmlJSON[i].points.length)
+    }else{
+      console.log(`TAOI  ${i}`);
+      console.log("not adding to valid TAOIs")
+      console.log(kmlJSON[i]);
+      console.log(kmlJSON[i].points.length)
+    }
+
+  }
+  kmlJSON = Valid_TAOIs;
+}
+
+async function ConjureFormatting(){
+  const inputJSON = kmlJSON;
+  
+  const outputJSON = {
+    shapes: []
+  };
+  
+  inputJSON.forEach(item => {
+    const shape = {
+      name: `${item.name}`,
+      description: "default description",
+      type: 3,
+      color: 4,
+      lineStyle: 1,
+      shapeType: 18,
+      userDrawnShapeIsClosed: "true",
+      uniqueShapeID: `${item.id}`,
+      isACircle: "false",
+      radiusInNM: 0,
+      taoiPoints: []
+    };
+  
+    item.points.forEach((point, index) => {
+        const taoiPoint = {
+          latitudeDegrees: point.latitude,
+          longitudeDegrees: point.longitude,
+          pointConnected: index === 0 ? 0 : 1 // Set pointConnected to 1 for the first point, 0 for others
+        };
+        shape.taoiPoints.push(taoiPoint);
+      });
+  
+    outputJSON.shapes.push(shape);
+  });
+  kmlJSON = outputJSON;
+}
+
 export default function App() {
   return (
     <View style={styles.container}>
       <Button title="Import KML" onPress={() => ingestKML()} />
+      <Button title="Clean KML Data" onPress={() => CleanKMLJSON()} />
+      <Button title="Conjure Formatting" onPress={() => ConjureFormatting()} />
       <Button title="clear KML object" onPress={()=>clearJSON()} />
       <Text>Open up App.js to start working on your app!</Text>
       <Text>Hello World</Text>
