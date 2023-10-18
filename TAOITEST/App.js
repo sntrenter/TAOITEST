@@ -274,7 +274,9 @@ async function ConjureFormatting(){
   });
   kmlJSON = outputJSON;
 }
-
+//<Text>Open up App.js to start working on your app!</Text>
+//<Text>Hello World</Text>
+//<Text>Test</Text>
 export default function App() {
   return (
     <View style={styles.container}>
@@ -282,9 +284,6 @@ export default function App() {
       <Button title="Clean KML Data" onPress={() => CleanKMLJSON()} />
       <Button title="Conjure Formatting" onPress={() => ConjureFormatting()} />
       <Button title="clear KML object" onPress={()=>clearJSON()} />
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Hello World</Text>
-      <Text>Test</Text>
         <Button title="Export JSON" onPress={() => ExportJSON()} />
         <Button title="check JSON" onPress={() => console.log("CHECK",kmlJSON)} /> 
       <StatusBar style="auto" />
